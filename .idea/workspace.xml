@@ -4,7 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e489cfb2-3e8e-4251-aa87-4c398aa7b7bf" name="Changes" comment="" />
+    <list default="true" id="e489cfb2-3e8e-4251-aa87-4c398aa7b7bf" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/express/IncomingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/express/IncomingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/it/HelloWorldIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/ApplicationIT.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,7 +62,30 @@
       <recent name="com.express" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.ApplicationTest">
+  <component name="RunManager" selected="Gradle.ApplicationIT">
+    <configuration name="ApplicationIT" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;it.ApplicationIT&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="ApplicationTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -151,6 +178,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.ApplicationIT" />
         <item itemvalue="Gradle.ApplicationTest" />
         <item itemvalue="Gradle.HelloWorldIT" />
         <item itemvalue="Gradle.HelloWorldE2E" />

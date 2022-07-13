@@ -4,6 +4,8 @@ import com.sun.net.httpserver.HttpExchange;
 
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class IncomingHandler {
     private final ArrayList<HandlerContainer> handlerContainers = new ArrayList<>();
@@ -16,17 +18,18 @@ public class IncomingHandler {
         final Request request = new Request();
         final Response response = new Response(exchange);
 
-        final Handler handler = findHandler(exchange);
+        final List<Handler> handlers = buildHandlersChain(exchange);
+        final NextFunctionHandler next = new NextFunctionHandlerImpl();
 
-        handler.handle(request, response, () -> {});
+        handlers.forEach(handler -> handler.handle(request, response, next));
     }
 
-    private Handler findHandler(HttpExchange exchange) {
+    private List<Handler> buildHandlersChain(HttpExchange exchange) {
         final String method = exchange.getRequestMethod();
         final URI url = exchange.getRequestURI();
 
         return handlerContainers.stream().filter(handlerContainer ->
-                handlerContainer.getMethod().equals(method) && handlerContainer.getPattern().equals(url.toString())
-        ).findFirst().get().getHandler();
+            handlerContainer.getMethod().equals(method) && handlerContainer.getPattern().equals(url.toString())
+        ).map(HandlerContainer::getHandler).collect(Collectors.toList());
     }
 }

@@ -28,8 +28,9 @@ class IncomingHandler {
         final String method = exchange.getRequestMethod();
         final URI url = exchange.getRequestURI();
 
-        return handlerContainers.stream().filter(handlerContainer ->
-            handlerContainer.getMethod().toString().equals(method) && handlerContainer.getPattern().equals(url.toString())
-        ).map(HandlerContainer::getHandler).collect(Collectors.toList());
+        return handlerContainers.stream()
+                .filter(handlerContainer -> handlerContainer.matches(method, url))
+                .map(HandlerContainer::getHandler)
+                .collect(Collectors.toList());
     }
 }

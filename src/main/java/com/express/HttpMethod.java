@@ -1,7 +1,8 @@
 package com.express;
 
 public enum HttpMethod {
-    GET("GET");
+    GET("GET"),
+    POST("POST");
 
     HttpMethod(String s) {
 

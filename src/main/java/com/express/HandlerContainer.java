@@ -1,5 +1,7 @@
 package com.express;
 
+import java.net.URI;
+
 class HandlerContainer {
     private final HttpMethod method;
     private final String pattern;
@@ -11,12 +13,8 @@ class HandlerContainer {
         this.handler = handler;
     }
 
-    public HttpMethod getMethod() {
-        return method;
-    }
-
-    public String getPattern() {
-        return pattern;
+    public boolean matches(String method, URI uri) {
+        return this.method.toString().equals(method) && pattern.equals(uri.toString());
     }
 
     public Handler getHandler() {

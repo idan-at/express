@@ -1,4 +1,4 @@
-package e2e;
+package it;
 
 import com.express.Application;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -12,7 +12,7 @@ import java.nio.charset.StandardCharsets;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class HelloWorldE2E {
+public class HelloWorldIT {
     @Test
     void express_helloWorld() throws IOException {
         Application app = new Application();

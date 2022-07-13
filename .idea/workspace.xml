@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e489cfb2-3e8e-4251-aa87-4c398aa7b7bf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/express/Router.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/express/IncomingHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/express/handlerfunctions/Handler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/express/handlerfunctions/RequestHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/express/router/Router.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/express/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/express/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/e2e/HelloWorldE2E.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/e2e/HelloWorldE2E.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/express/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/express/handlerfunctions/RequestResponseHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/express/Router.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/e2e/HelloWorldE2E.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/HelloWorldIT.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +28,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -53,7 +58,7 @@
       <recent name="com.express" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.HelloWorldE2E">
+  <component name="RunManager" selected="Gradle.HelloWorldIT">
     <configuration name="HelloWorldE2E" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -68,6 +73,29 @@
             <option value=":test" />
             <option value="--tests" />
             <option value="&quot;e2e.HelloWorldE2E&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
+    <configuration name="HelloWorldIT" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;it.HelloWorldIT&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -100,6 +128,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.HelloWorldIT" />
         <item itemvalue="Gradle.HelloWorldE2E" />
         <item itemvalue="Gradle.express [dependencies]" />
       </list>

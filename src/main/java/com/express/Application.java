@@ -1,29 +1,31 @@
 package com.express;
+import com.express.handlerfunctions.RequestResponseHandler;
+import com.express.router.Router;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 
-public class Application {
-    private final Router router = new Router();
+public class Application implements Router, AutoCloseable {
+    private final IncomingHandler incomingHandler = new IncomingHandler();
     private HttpServer httpServer;
 
     public Application() {}
 
 
-    public void get(String path, Handler handler) {
+    public Router get(String path, RequestResponseHandler handler) {
+        return this;
     }
 
     public void listen(int port) throws IOException {
         InetSocketAddress socketAddress = new InetSocketAddress(port);
 
         httpServer = HttpServer.create(socketAddress, 0);
-        httpServer.createContext("/", router::handle);
+        httpServer.createContext("/", incomingHandler::handle);
 
         httpServer.start();
     }
 
-    // TODO: Impl auto closable
     public void close() {
         httpServer.stop(0);
     }

@@ -6,7 +6,7 @@ import java.net.URI;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-class IncomingHandler {
+class RequestHandler {
     private final ArrayList<HandlerContainer> handlerContainers = new ArrayList<>();
 
     void add(HandlerContainer handlerContainer) {

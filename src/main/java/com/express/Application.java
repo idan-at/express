@@ -1,17 +1,18 @@
 package com.express;
+
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 
 public class Application implements Routable, AutoCloseable {
-    private final IncomingHandler incomingHandler = new IncomingHandler();
+    private final RequestHandler requestHandler = new RequestHandler();
     private HttpServer server;
 
     public Application() {}
 
     public Routable get(String pattern, Handler handler) {
-        incomingHandler.add(new HandlerContainer(HttpMethod.GET, pattern, handler));
+        requestHandler.add(new HandlerContainer(HttpMethod.GET, pattern, handler));
 
         return this;
     }
@@ -20,7 +21,7 @@ public class Application implements Routable, AutoCloseable {
         final InetSocketAddress socketAddress = new InetSocketAddress(port);
 
         server = HttpServer.create(socketAddress, 0);
-        server.createContext("/", incomingHandler::handle);
+        server.createContext("/", requestHandler::handle);
 
         server.start();
     }

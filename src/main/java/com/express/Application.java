@@ -27,6 +27,8 @@ public class Application implements Router, AutoCloseable {
     }
 
     public void close() {
-        httpServer.stop(0);
+        if (httpServer != null) {
+            httpServer.stop(0);
+        }
     }
 }

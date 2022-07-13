@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e489cfb2-3e8e-4251-aa87-4c398aa7b7bf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/express/IncomingHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/express/handlerfunctions/Handler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/express/handlerfunctions/RequestHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/express/router/Router.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/express/ApplicationTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/express/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/express/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/express/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/express/handlerfunctions/RequestResponseHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/express/Router.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/e2e/HelloWorldE2E.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/HelloWorldIT.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +24,7 @@
       <list>
         <option value="Class" />
         <option value="Interface" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
@@ -45,20 +40,51 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.express" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.express" />
+    </key>
   </component>
-  <component name="RunManager" selected="Gradle.HelloWorldIT">
+  <component name="RunManager" selected="Gradle.ApplicationTest">
+    <configuration name="ApplicationTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;com.express.ApplicationTest&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="HelloWorldE2E" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -128,6 +154,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.ApplicationTest" />
         <item itemvalue="Gradle.HelloWorldIT" />
         <item itemvalue="Gradle.HelloWorldE2E" />
         <item itemvalue="Gradle.express [dependencies]" />

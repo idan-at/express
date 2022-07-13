@@ -15,23 +15,21 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class HelloWorldIT {
     @Test
     void express_helloWorld() throws IOException {
-        Application app = new Application();
+        try(Application app = new Application()) {
+            app.get("/", (req, res) -> {
+                res.send("Hello, World!");
+            });
 
-        app.get("/", (req, res) -> {
-            res.send("Hello, World!");
-        });
+            app.listen(3000);
 
-        app.listen(3000);
+            try(CloseableHttpClient httpclient = HttpClients.createDefault()) {
+                HttpGet request = new HttpGet("http://localhost:3000/");
 
-        try(CloseableHttpClient httpclient = HttpClients.createDefault()){
-            HttpGet request = new HttpGet("http://localhost:3000/");
-
-            try (CloseableHttpResponse response = httpclient.execute(request)) {
-                assertEquals(200, response.getStatusLine().getStatusCode());
-                assertEquals("Hello, World!", new String(response.getEntity().getContent().readAllBytes(), StandardCharsets.UTF_8));
+                try (CloseableHttpResponse response = httpclient.execute(request)) {
+                    assertEquals(200, response.getStatusLine().getStatusCode());
+                    assertEquals("Hello, World!", new String(response.getEntity().getContent().readAllBytes(), StandardCharsets.UTF_8));
+                }
             }
         }
-
-        app.close();
     }
 }

@@ -7,6 +7,9 @@ public class Request {
         this.method = method;
     }
 
+    /**
+     * @return The request HTTP Method
+     */
     public HttpMethod getMethod() {
         return method;
     }

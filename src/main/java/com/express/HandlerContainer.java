@@ -5,7 +5,6 @@ public class HandlerContainer {
     private final String pattern;
     private final Handler handler;
 
-
     public HandlerContainer(HttpMethod method, String pattern, Handler handler) {
         this.method = method;
         this.pattern = pattern;

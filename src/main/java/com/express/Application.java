@@ -35,6 +35,13 @@ public class Application implements Routable, AutoCloseable {
         return this;
     }
 
+    @Override
+    public Routable delete(String pattern, Handler handler) {
+        requestHandler.add(new HandlerContainer(HttpMethod.DELETE, pattern, handler));
+
+        return this;
+    }
+
     /**
      * Starts the server.
      * @param port The port to listen to

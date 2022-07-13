@@ -18,10 +18,18 @@ public interface Routable {
     Routable post(String pattern, Handler handler);
 
     /**
-     * Routes HTTP Put requests to the given handler.
+     * Routes HTTP PUT requests to the given handler.
      * @param pattern The URL pattern, e.g "/users"
      * @param handler The Handler function
      * @return The routable object, to allow chaining.
      */
     Routable put(String pattern, Handler handler);
+
+    /**
+     * Routes HTTP DELETE requests to the given handler.
+     * @param pattern The URL pattern, e.g "/users"
+     * @param handler The Handler function
+     * @return The routable object, to allow chaining.
+     */
+    Routable delete(String pattern, Handler handler);
 }

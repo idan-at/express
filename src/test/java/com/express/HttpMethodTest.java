@@ -19,4 +19,9 @@ class HttpMethodTest {
     void fromString_PUT() {
         assertEquals(HttpMethod.PUT, HttpMethod.fromString("PUT"));
     }
+
+    @Test
+    void fromString_DELETE() {
+        assertEquals(HttpMethod.DELETE, HttpMethod.fromString("DELETE"));
+    }
 }

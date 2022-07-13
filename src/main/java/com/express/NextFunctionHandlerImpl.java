@@ -1,6 +1,6 @@
 package com.express;
 
-public class NextFunctionHandlerImpl implements NextFunctionHandler {
+class NextFunctionHandlerImpl implements NextFunctionHandler {
     @Override
     public void ok() {
 

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class IncomingHandler {
+class IncomingHandler {
     private final ArrayList<HandlerContainer> handlerContainers = new ArrayList<>();
 
     public void add(HandlerContainer handlerContainer) {

@@ -1,6 +1,6 @@
 package com.express;
 
-public class HandlerContainer {
+class HandlerContainer {
     private final HttpMethod method;
     private final String pattern;
     private final Handler handler;

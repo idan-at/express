@@ -7,7 +7,6 @@ import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
 import org.junit.jupiter.api.Test;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 
@@ -22,7 +21,7 @@ public class HelloWorldE2E {
             res.send("Hello, World!");
         });
 
-        app.listen((short) 3000);
+        app.listen(3000);
 
         try(CloseableHttpClient httpclient = HttpClients.createDefault()){
             HttpGet request = new HttpGet("http://localhost:3000/");
@@ -32,5 +31,7 @@ public class HelloWorldE2E {
                 assertEquals("Hello, World!", new String(response.getEntity().getContent().readAllBytes(), StandardCharsets.UTF_8));
             }
         }
+
+        app.close();
     }
 }

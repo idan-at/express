@@ -26,8 +26,10 @@ public class HelloWorldIT {
                 HttpGet request = new HttpGet("http://localhost:3000/");
 
                 try (CloseableHttpResponse response = httpclient.execute(request)) {
+                    String body = new String(response.getEntity().getContent().readAllBytes(), StandardCharsets.UTF_8);
+
                     assertEquals(200, response.getStatusLine().getStatusCode());
-                    assertEquals("Hello, World!", new String(response.getEntity().getContent().readAllBytes(), StandardCharsets.UTF_8));
+                    assertEquals("Hello, World!", body);
                 }
             }
         }

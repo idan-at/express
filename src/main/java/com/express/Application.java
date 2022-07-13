@@ -12,13 +12,14 @@ public class Application implements Router, AutoCloseable {
 
     public Application() {}
 
+    public Router get(String pattern, RequestResponseHandler handler) {
+        incomingHandler.add(new HandlerContainer("GET", pattern, handler));
 
-    public Router get(String path, RequestResponseHandler handler) {
         return this;
     }
 
     public void listen(int port) throws IOException {
-        InetSocketAddress socketAddress = new InetSocketAddress(port);
+        final InetSocketAddress socketAddress = new InetSocketAddress(port);
 
         httpServer = HttpServer.create(socketAddress, 0);
         httpServer.createContext("/", incomingHandler::handle);

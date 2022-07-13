@@ -14,9 +14,6 @@ class PatternURIMatcher {
         String[] segments = pattern.split("/");
         String[] uriSegments = uri.toString().split("/");
 
-        System.out.println(String.join(",", segments));
-        System.out.println(String.join(",", uriSegments));
-
         return pattern.equals(uri.toString());
     }
 }

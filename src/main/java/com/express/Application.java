@@ -28,6 +28,13 @@ public class Application implements Routable, AutoCloseable {
         return this;
     }
 
+    @Override
+    public Routable put(String pattern, Handler handler) {
+        requestHandler.add(new HandlerContainer(HttpMethod.PUT, pattern, handler));
+
+        return this;
+    }
+
     /**
      * Starts the server.
      * @param port The port to listen to

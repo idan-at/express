@@ -14,4 +14,9 @@ class HttpMethodTest {
     void fromString_POST() {
         assertEquals(HttpMethod.POST, HttpMethod.fromString("POST"));
     }
+
+    @Test
+    void fromString_PUT() {
+        assertEquals(HttpMethod.PUT, HttpMethod.fromString("PUT"));
+    }
 }

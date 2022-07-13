@@ -2,7 +2,8 @@ package com.express;
 
 public enum HttpMethod {
     GET("GET"),
-    POST("POST");
+    POST("POST"),
+    PUT("PUT");
 
     HttpMethod(String s) {
 
@@ -12,8 +13,10 @@ public enum HttpMethod {
         switch (method) {
             case "GET":
                 return GET;
-            default:
+            case "POST":
                 return POST;
+            default:
+                return PUT;
         }
     }
 }

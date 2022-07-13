@@ -6,9 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class HttpMethodTest {
     @Test
-    void fromString_GET() {
-        assertEquals(HttpMethod.GET, HttpMethod.fromString("GET"));
-    }
+    void fromString_GET() { assertEquals(HttpMethod.GET, HttpMethod.fromString("GET")); }
 
     @Test
     void fromString_POST() {

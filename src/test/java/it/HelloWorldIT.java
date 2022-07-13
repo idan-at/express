@@ -16,7 +16,7 @@ public class HelloWorldIT {
     @Test
     void express_helloWorld() throws IOException {
         try(Application app = new Application()) {
-            app.get("/", (req, res) -> {
+            app.get("/", (req, res, next) -> {
                 res.send("Hello, World!");
             });
 

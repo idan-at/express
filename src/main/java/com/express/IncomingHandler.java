@@ -18,7 +18,7 @@ public class IncomingHandler {
 
         final Handler handler = findHandler(exchange);
 
-        handler.handle(request, response);
+        handler.handle(request, response, () -> {});
     }
 
     private Handler findHandler(HttpExchange exchange) {

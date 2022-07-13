@@ -1,7 +1,5 @@
 package com.express;
 
-import com.express.handlerfunctions.Handler;
-
 public class HandlerContainer {
     private final String method;
     private final String pattern;

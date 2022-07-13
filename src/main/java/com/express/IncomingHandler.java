@@ -1,7 +1,5 @@
 package com.express;
 
-import com.express.handlerfunctions.Handler;
-import com.express.handlerfunctions.RequestResponseHandler;
 import com.sun.net.httpserver.HttpExchange;
 
 import java.net.URI;
@@ -19,9 +17,8 @@ public class IncomingHandler {
         final Response response = new Response(exchange);
 
         final Handler handler = findHandler(exchange);
-        final RequestResponseHandler h = (RequestResponseHandler) handler;
 
-        h.handle(request, response);
+        handler.handle(request, response);
     }
 
     private Handler findHandler(HttpExchange exchange) {

@@ -1,18 +1,16 @@
 package com.express;
-import com.express.handlerfunctions.RequestResponseHandler;
-import com.express.router.Router;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 
-public class Application implements Router, AutoCloseable {
+public class Application implements Routable, AutoCloseable {
     private final IncomingHandler incomingHandler = new IncomingHandler();
     private HttpServer httpServer;
 
     public Application() {}
 
-    public Router get(String pattern, RequestResponseHandler handler) {
+    public Routable get(String pattern, Handler handler) {
         incomingHandler.add(new HandlerContainer("GET", pattern, handler));
 
         return this;

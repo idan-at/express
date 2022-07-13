@@ -7,4 +7,13 @@ public enum HttpMethod {
     HttpMethod(String s) {
 
     }
+
+    public static HttpMethod fromString(String method) {
+        switch (method) {
+            case "GET":
+                return GET;
+            default:
+                return POST;
+        }
+    }
 }

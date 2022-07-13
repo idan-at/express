@@ -14,7 +14,8 @@ class RequestHandler {
     }
 
     void handle(HttpExchange exchange) {
-        final Request request = new Request();
+        HttpMethod method = HttpMethod.fromString(exchange.getRequestMethod());
+        final Request request = new Request(method);
         final Response response = new Response(exchange);
 
         final Iterator<Handler> handlers = buildHandlersChain(exchange);

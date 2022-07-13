@@ -9,7 +9,7 @@ import java.nio.charset.StandardCharsets;
 public class Response {
     private final HttpExchange exchange;
 
-    public Response(HttpExchange exchange) {
+    Response(HttpExchange exchange) {
         this.exchange = exchange;
     }
 

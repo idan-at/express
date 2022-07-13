@@ -42,7 +42,7 @@ public class ApplicationIT {
             app.get("/", (req, res, next) -> {
                 next.ok();
             }).get("/", (req, res, next) -> {
-                res.send("Hello, World!");
+                res.send(req.getMethod() + ": Hello, World!");
             });
 
             app.listen(3000);
@@ -54,7 +54,7 @@ public class ApplicationIT {
                     String body = new String(response.getEntity().getContent().readAllBytes(), StandardCharsets.UTF_8);
 
                     assertEquals(200, response.getStatusLine().getStatusCode());
-                    assertEquals("Hello, World!", body);
+                    assertEquals("GET: Hello, World!", body);
                 }
             }
         }

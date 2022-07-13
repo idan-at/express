@@ -1,18 +1,18 @@
 package com.express;
 
 public class HandlerContainer {
-    private final String method;
+    private final HttpMethod method;
     private final String pattern;
     private final Handler handler;
 
 
-    public HandlerContainer(String method, String pattern, Handler handler) {
+    public HandlerContainer(HttpMethod method, String pattern, Handler handler) {
         this.method = method;
         this.pattern = pattern;
         this.handler = handler;
     }
 
-    public String getMethod() {
+    public HttpMethod getMethod() {
         return method;
     }
 

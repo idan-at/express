@@ -29,7 +29,7 @@ public class IncomingHandler {
         final URI url = exchange.getRequestURI();
 
         return handlerContainers.stream().filter(handlerContainer ->
-            handlerContainer.getMethod().equals(method) && handlerContainer.getPattern().equals(url.toString())
+            handlerContainer.getMethod().toString().equals(method) && handlerContainer.getPattern().equals(url.toString())
         ).map(HandlerContainer::getHandler).collect(Collectors.toList());
     }
 }

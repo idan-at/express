@@ -11,7 +11,7 @@ public class Application implements Routable, AutoCloseable {
     public Application() {}
 
     public Routable get(String pattern, Handler handler) {
-        incomingHandler.add(new HandlerContainer("GET", pattern, handler));
+        incomingHandler.add(new HandlerContainer(HttpMethod.GET, pattern, handler));
 
         return this;
     }

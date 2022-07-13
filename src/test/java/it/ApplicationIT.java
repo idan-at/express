@@ -63,14 +63,14 @@ public class ApplicationIT {
     @Test
     void post_helloWorld() throws IOException {
         try(Application app = new Application()) {
-            app.post("/", (req, res, next) -> {
+            app.post("/hello", (req, res, next) -> {
                 res.send("Hello, World!");
             });
 
             app.listen(3000);
 
             try(CloseableHttpClient httpclient = HttpClients.createDefault()) {
-                HttpPost request = new HttpPost("http://localhost:3000/");
+                HttpPost request = new HttpPost("http://localhost:3000/hello");
 
                 try (CloseableHttpResponse response = httpclient.execute(request)) {
                     String body = new String(response.getEntity().getContent().readAllBytes(), StandardCharsets.UTF_8);

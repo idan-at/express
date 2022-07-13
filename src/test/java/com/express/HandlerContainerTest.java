@@ -25,8 +25,8 @@ class HandlerContainerTest {
 
     @Test
     void matches_patternMismatch() {
-        HandlerContainer handlerContainer = new HandlerContainer(HttpMethod.GET, "/", handler);
+        HandlerContainer handlerContainer = new HandlerContainer(HttpMethod.GET, "/hello", handler);
 
-        assertFalse(handlerContainer.matches(HttpMethod.GET.toString(), URI.create("/abc")));;
+        assertFalse(handlerContainer.matches(HttpMethod.GET.toString(), URI.create("/wrong")));;
     }
 }

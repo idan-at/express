@@ -22,8 +22,22 @@ public class Application implements Routable, AutoCloseable {
     }
 
     @Override
+    public Routable get(String pattern, ErrorHandler handler) {
+        requestHandler.add(new ErrorHandlerContainer(HttpMethod.GET, pattern, handler));
+
+        return this;
+    }
+
+    @Override
     public Routable post(String pattern, Handler handler) {
         requestHandler.add(new HandlerContainer(HttpMethod.POST, pattern, handler));
+
+        return this;
+    }
+
+    @Override
+    public Routable post(String pattern, ErrorHandler handler) {
+        requestHandler.add(new ErrorHandlerContainer(HttpMethod.POST, pattern, handler));
 
         return this;
     }
@@ -36,6 +50,13 @@ public class Application implements Routable, AutoCloseable {
     }
 
     @Override
+    public Routable put(String pattern, ErrorHandler handler) {
+        requestHandler.add(new ErrorHandlerContainer(HttpMethod.PUT, pattern, handler));
+
+        return this;
+    }
+
+    @Override
     public Routable patch(String pattern, Handler handler) {
         requestHandler.add(new HandlerContainer(HttpMethod.PATCH, pattern, handler));
 
@@ -43,8 +64,22 @@ public class Application implements Routable, AutoCloseable {
     }
 
     @Override
+    public Routable patch(String pattern, ErrorHandler handler) {
+        requestHandler.add(new ErrorHandlerContainer(HttpMethod.PATCH, pattern, handler));
+
+        return this;
+    }
+
+    @Override
     public Routable delete(String pattern, Handler handler) {
         requestHandler.add(new HandlerContainer(HttpMethod.DELETE, pattern, handler));
+
+        return this;
+    }
+
+    @Override
+    public Routable delete(String pattern, ErrorHandler handler) {
+        requestHandler.add(new ErrorHandlerContainer(HttpMethod.DELETE, pattern, handler));
 
         return this;
     }

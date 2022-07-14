@@ -147,6 +147,30 @@ public class ApplicationIT {
     }
 
     @Test
+    void get_errorChain() throws IOException {
+        try(Application app = new Application()) {
+            app.get("/hello", (req, res, next) -> {
+                next.error(new RuntimeException("Oops"));
+            }).get("/hello", (err, req, res, next) -> {
+                res.setStatus(400).send(err.getMessage());
+            });
+
+            app.listen(3000);
+
+            try(CloseableHttpClient httpclient = HttpClients.createDefault()) {
+                HttpGet request = new HttpGet("http://localhost:3000/hello");
+
+                try (CloseableHttpResponse response = httpclient.execute(request)) {
+                    String body = new String(response.getEntity().getContent().readAllBytes(), StandardCharsets.UTF_8);
+
+                    assertEquals(400, response.getStatusLine().getStatusCode());
+                    assertEquals("Oops", body);
+                }
+            }
+        }
+    }
+
+    @Test
     void response_sendStatus() throws IOException {
         try(Application app = new Application()) {
             app.delete("/hello", (req, res, next) -> {

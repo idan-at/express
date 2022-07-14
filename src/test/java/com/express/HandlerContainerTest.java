@@ -6,6 +6,7 @@ import java.net.URI;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+// TODO: test against the abstract class
 class HandlerContainerTest {
     static Handler handler = (req, res, next) -> {};
 

@@ -40,7 +40,7 @@ public class ApplicationIT {
             app.get("/", (req, res, next) -> {
                 next.ok();
             }).get("/", (req, res, next) -> {
-                res.send(req.getMethod() + ": Hello, World!");
+                res.setStatus(202).send(req.getMethod() + ": Hello, World!");
             });
 
             app.listen(3000);
@@ -51,7 +51,7 @@ public class ApplicationIT {
                 try (CloseableHttpResponse response = httpclient.execute(request)) {
                     String body = new String(response.getEntity().getContent().readAllBytes(), StandardCharsets.UTF_8);
 
-                    assertEquals(200, response.getStatusLine().getStatusCode());
+                    assertEquals(202, response.getStatusLine().getStatusCode());
                     assertEquals("GET: Hello, World!", body);
                 }
             }
@@ -141,6 +141,25 @@ public class ApplicationIT {
 
                     assertEquals(200, response.getStatusLine().getStatusCode());
                     assertEquals("Hello, World!", body);
+                }
+            }
+        }
+    }
+
+    @Test
+    void response_sendStatus() throws IOException {
+        try(Application app = new Application()) {
+            app.delete("/hello", (req, res, next) -> {
+                res.sendStatus(404);
+            });
+
+            app.listen(3000);
+
+            try(CloseableHttpClient httpclient = HttpClients.createDefault()) {
+                HttpDelete request = new HttpDelete("http://localhost:3000/hello");
+
+                try (CloseableHttpResponse response = httpclient.execute(request)) {
+                    assertEquals(404, response.getStatusLine().getStatusCode());
                 }
             }
         }

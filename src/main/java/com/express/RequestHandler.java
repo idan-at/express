@@ -19,21 +19,8 @@ class RequestHandler {
         final Request request = new Request(method);
         final Response response = new Response(exchange);
 
-        final Iterator<Handler> handlers = buildHandlersChain(exchange);
+        final RequestChain requestChain = new RequestChainBuilder().withHandlers(handlerContainers).build(exchange);
 
-        final Handler first = handlers.next();
-        final NextFunctionHandler next = new NextFunctionHandlerImpl(request, response, handlers);
-
-        first.handle(request, response, next);
-    }
-
-    private Iterator<Handler> buildHandlersChain(HttpExchange exchange) {
-        final String method = exchange.getRequestMethod();
-        final URI url = exchange.getRequestURI();
-
-        return handlerContainers.stream()
-                .filter(handlerContainer -> handlerContainer.matches(method, url))
-                .map(HandlerContainer::getHandler)
-                .iterator();
+        requestChain.run(request, response);
     }
 }

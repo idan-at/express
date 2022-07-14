@@ -8,10 +8,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/express/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/express/Application.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/express/HttpMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/express/HttpMethod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/express/PatternURIMatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/express/PatternURIMatcher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/express/Routable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/express/Routable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/express/HttpMethodTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/express/HttpMethodTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/ApplicationIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/ApplicationIT.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

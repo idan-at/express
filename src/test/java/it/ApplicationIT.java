@@ -103,6 +103,28 @@ public class ApplicationIT {
     }
 
     @Test
+    void patch_helloWorld() throws IOException {
+        try(Application app = new Application()) {
+            app.patch("/hello", (req, res, next) -> {
+                res.send("Hello, World!");
+            });
+
+            app.listen(3000);
+
+            try(CloseableHttpClient httpclient = HttpClients.createDefault()) {
+                HttpPatch request = new HttpPatch("http://localhost:3000/hello");
+
+                try (CloseableHttpResponse response = httpclient.execute(request)) {
+                    String body = new String(response.getEntity().getContent().readAllBytes(), StandardCharsets.UTF_8);
+
+                    assertEquals(200, response.getStatusLine().getStatusCode());
+                    assertEquals("Hello, World!", body);
+                }
+            }
+        }
+    }
+
+    @Test
     void delete_helloWorld() throws IOException {
         try(Application app = new Application()) {
             app.delete("/hello", (req, res, next) -> {

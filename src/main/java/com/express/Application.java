@@ -36,6 +36,13 @@ public class Application implements Routable, AutoCloseable {
     }
 
     @Override
+    public Routable patch(String pattern, Handler handler) {
+        requestHandler.add(new HandlerContainer(HttpMethod.PATCH, pattern, handler));
+
+        return this;
+    }
+
+    @Override
     public Routable delete(String pattern, Handler handler) {
         requestHandler.add(new HandlerContainer(HttpMethod.DELETE, pattern, handler));
 

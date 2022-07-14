@@ -4,6 +4,7 @@ public enum HttpMethod {
     GET("GET"),
     POST("POST"),
     PUT("PUT"),
+    PATCH("PATCH"),
     DELETE("DELETE");
 
     HttpMethod(String s) {
@@ -18,6 +19,8 @@ public enum HttpMethod {
                 return POST;
             case "PUT":
                 return PUT;
+            case "PATCH":
+                return PATCH;
             default:
                 return DELETE;
         }

@@ -26,6 +26,14 @@ public interface Routable {
     Routable put(String pattern, Handler handler);
 
     /**
+     * Routes HTTP PATCH requests to the given handler.
+     * @param pattern The URL pattern, e.g "/users"
+     * @param handler The Handler function
+     * @return The routable object, to allow chaining.
+     */
+    Routable patch(String pattern, Handler handler);
+
+    /**
      * Routes HTTP DELETE requests to the given handler.
      * @param pattern The URL pattern, e.g "/users"
      * @param handler The Handler function

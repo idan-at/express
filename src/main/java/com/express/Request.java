@@ -1,5 +1,6 @@
 package com.express;
 
+// TODO: Add IT and test all features
 public class Request {
     private final HttpMethod method;
 

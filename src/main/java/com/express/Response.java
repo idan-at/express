@@ -14,12 +14,21 @@ public class Response {
         this.exchange = exchange;
     }
 
+    /**
+     * Sets the HTTP status to send when the request is finalized.
+     * @param status The status to set.
+     * @return The Response
+     */
     public Response setStatus(int status) {
         this.status = status;
 
         return this;
     }
 
+    /**
+     * Finalizes the response and sends the given body.
+     * @param body The string body to send.
+     */
     public void send(String body) {
         byte[] bytes = body.getBytes(StandardCharsets.UTF_8);
 
@@ -33,11 +42,28 @@ public class Response {
         }
     }
 
+    /**
+     * Finalizes the request by sending the given HTTP status
+     *
+     * @param status The HTTP status to send
+     */
     public void sendStatus(int status) {
         try {
             exchange.sendResponseHeaders(status, 0);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    /**
+     * Sets the given header
+     * @param name The header name
+     * @param value The header value
+     * @return The Response
+     */
+    public Response setHeader(String name, String value) {
+        exchange.getResponseHeaders().set(name, value);
+
+        return this;
     }
 }

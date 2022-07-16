@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import java.net.URI;
 
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class PatternURIMatcherTest {
@@ -12,6 +13,13 @@ class PatternURIMatcherTest {
         PatternURIMatcher matcher = new PatternURIMatcher("/");
 
         assertTrue(matcher.matches(URI.create("/")));
+    }
+
+    @Test
+    void doesNotEqual() {
+        PatternURIMatcher matcher = new PatternURIMatcher("/hello");
+
+        assertFalse(matcher.matches(URI.create("/bye")));
     }
 
     @Test

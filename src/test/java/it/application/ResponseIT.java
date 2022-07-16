@@ -3,8 +3,7 @@ package it.application;
 import com.express.Application;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.*;
-import org.apache.http.impl.client.CloseableHttpClient;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClients;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
@@ -26,6 +25,7 @@ public class ResponseIT {
         app.get("/send", (req, res, next) -> res.send("Hello, World!"));
         app.get("/setStatus", (req, res, next) -> res.setStatus(202).send("Hello, World!"));
         app.get("/sendStatus", (req, res, next) -> res.sendStatus(400));
+        app.get("/setHeader", (req, res, next) -> res.setHeader("Content-Type", "application/json").sendStatus(200));
 
         app.listen(3000);
     }
@@ -44,6 +44,17 @@ public class ResponseIT {
 
         assertEquals(200, response.getStatusLine().getStatusCode());
         assertEquals("Hello, World!", body);
+    }
+
+    @Test
+    void setHeader() throws IOException {
+        HttpGet request = new HttpGet("http://localhost:3000/setHeader");
+
+        HttpResponse response = httpClient.execute(request);
+
+        String contentType = response.getHeaders("Content-Type")[0].getValue();
+
+        assertEquals("application/json", contentType);
     }
 
     @Test

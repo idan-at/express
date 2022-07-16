@@ -10,9 +10,21 @@ class PatternURIMatcher {
     }
 
     boolean matches(URI uri) {
-        String[] segments = pattern.split("/");
-        String[] uriSegments = uri.toString().split("/");
+        final String[] segments = pattern.split("/");
+        final String[] uriSegments = uri.toString().split("/");
 
-        return pattern.equals(uri.toString());
+        int i = 0;
+        int j = 0;
+
+        while (i < segments.length && j < uriSegments.length) {
+            if (segments[i].equals("*") || segments[i].equals(uriSegments[j])) {
+                i += 1;
+                j += 1;
+            } else {
+                return false;
+            }
+        }
+
+        return true;
     }
 }

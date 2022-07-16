@@ -20,4 +20,18 @@ class PatternURIMatcherTest {
 
         assertTrue(matcher.matches(URI.create("/a/b/c/d")));
     }
+
+    @Test
+    void ignoresTrailingSlash() {
+        PatternURIMatcher matcher = new PatternURIMatcher("/a/b/c/d");
+
+        assertTrue(matcher.matches(URI.create("/a/b/c/d/")));
+    }
+
+    @Test
+    void basicWildcard() {
+        PatternURIMatcher matcher = new PatternURIMatcher("/a/b/*/d");
+
+        assertTrue(matcher.matches(URI.create("/a/b/c/d")));
+    }
 }

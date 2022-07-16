@@ -6,27 +6,30 @@ import java.net.URI;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-// TODO: test against the abstract class
-class HandlerContainerTest {
-    static Handler handler = (req, res, next) -> {};
+class AbstractHandlerContainerTest {
+    static class SomeHandlerContainer extends AbstractHandlerContainer {
+        SomeHandlerContainer(HttpMethod method, String pattern) {
+            super(method, pattern);
+        }
+    }
 
     @Test
     void matches() {
-        HandlerContainer handlerContainer = new HandlerContainer(HttpMethod.GET, "/", handler);
+        SomeHandlerContainer handlerContainer = new SomeHandlerContainer(HttpMethod.GET, "/");
 
         assertTrue(handlerContainer.matches(HttpMethod.GET.toString(), URI.create("/")));;
     }
 
     @Test
     void httpMethodMismatch() {
-        HandlerContainer handlerContainer = new HandlerContainer(HttpMethod.GET, "/", handler);
+        SomeHandlerContainer handlerContainer = new SomeHandlerContainer(HttpMethod.GET, "/");
 
         assertFalse(handlerContainer.matches(HttpMethod.POST.toString(), URI.create("/")));;
     }
 
     @Test
     void patternMismatch() {
-        HandlerContainer handlerContainer = new HandlerContainer(HttpMethod.GET, "/hello", handler);
+        SomeHandlerContainer handlerContainer = new SomeHandlerContainer(HttpMethod.GET, "/hello");
 
         assertFalse(handlerContainer.matches(HttpMethod.GET.toString(), URI.create("/wrong")));;
     }

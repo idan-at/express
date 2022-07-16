@@ -1,7 +1,6 @@
 package com.express;
 
 import java.net.URI;
-import java.util.Arrays;
 
 class PatternURIMatcher {
     private final String pattern;

@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e489cfb2-3e8e-4251-aa87-4c398aa7b7bf" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/express/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/express/Response.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/express/PatternURIMatcherTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/com/express/PatternURIMatcherTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/it/application/ResponseIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/application/ResponseIT.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -78,6 +76,29 @@
     </key>
   </component>
   <component name="RunManager" selected="Gradle.ResponseIT">
+    <configuration name="ChainingIT" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;it.application.ChainingIT&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <method v="2" />
+    </configuration>
     <configuration name="PatternURIMatcherTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -92,29 +113,6 @@
             <option value=":test" />
             <option value="--tests" />
             <option value="&quot;com.express.PatternURIMatcherTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="PatternURIMatcherTest.doesNotEqual" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;com.express.PatternURIMatcherTest.doesNotEqual&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -147,7 +145,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="ResponseIT.setHeader" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ResponseIT.sendStatus" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -160,7 +158,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;it.application.ResponseIT.setHeader&quot;" />
+            <option value="&quot;it.application.ResponseIT.sendStatus&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -196,10 +194,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.ResponseIT" />
+        <item itemvalue="Gradle.ResponseIT.sendStatus" />
+        <item itemvalue="Gradle.ChainingIT" />
         <item itemvalue="Gradle.ResponseIT.setStatus" />
         <item itemvalue="Gradle.PatternURIMatcherTest" />
-        <item itemvalue="Gradle.PatternURIMatcherTest.doesNotEqual" />
-        <item itemvalue="Gradle.ResponseIT.setHeader" />
       </list>
     </recent_temporary>
   </component>
@@ -236,5 +234,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/express/Response.java</url>
+          <line>22</line>
+          <option name="timeStamp" value="18" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

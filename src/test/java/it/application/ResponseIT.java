@@ -47,17 +47,6 @@ public class ResponseIT {
     }
 
     @Test
-    void setHeader() throws IOException {
-        HttpGet request = new HttpGet("http://localhost:3000/setHeader");
-
-        HttpResponse response = httpClient.execute(request);
-
-        String contentType = response.getHeaders("Content-Type")[0].getValue();
-
-        assertEquals("application/json", contentType);
-    }
-
-    @Test
     void setStatus() throws IOException {
         HttpGet request = new HttpGet("http://localhost:3000/setStatus");
 
@@ -75,5 +64,16 @@ public class ResponseIT {
         HttpResponse response = httpClient.execute(request);
 
         assertEquals(400, response.getStatusLine().getStatusCode());
+    }
+
+    @Test
+    void setHeader() throws IOException {
+        HttpGet request = new HttpGet("http://localhost:3000/setHeader");
+
+        HttpResponse response = httpClient.execute(request);
+
+        String contentType = response.getHeaders("Content-Type")[0].getValue();
+
+        assertEquals("application/json", contentType);
     }
 }

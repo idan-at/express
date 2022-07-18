@@ -21,8 +21,10 @@ public enum HttpMethod {
                 return PUT;
             case "PATCH":
                 return PATCH;
-            default:
+            case "DELETE":
                 return DELETE;
+            default:
+                throw new UnsupportedHttpMethodException(method);
         }
     }
 }

@@ -19,7 +19,17 @@ class HttpMethodTest {
     }
 
     @Test
+    void fromString_PATCH() {
+        assertEquals(HttpMethod.PATCH, HttpMethod.fromString("PATCH"));
+    }
+
+    @Test
     void fromString_DELETE() {
         assertEquals(HttpMethod.DELETE, HttpMethod.fromString("DELETE"));
+    }
+
+    @Test
+    void fromString_unrecognized() {
+        assertThrows(UnsupportedHttpMethodException.class, () -> HttpMethod.fromString("NOT-A-METHOD"));
     }
 }

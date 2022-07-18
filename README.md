@@ -22,5 +22,7 @@ class App {
 
 Add this to your `pom.xml` / `build.gradle` file:
 
-`com.express:express:1.0-SNAPSHOT`
+```bash
+com.express:express:1.0-SNAPSHOT
+```
 

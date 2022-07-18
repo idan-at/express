@@ -42,4 +42,18 @@ class PatternURIMatcherTest {
 
         assertTrue(matcher.matches(URI.create("/a/b/c/d")));
     }
+
+    @Test
+    void wildcardMismatch() {
+        PatternURIMatcher matcher = new PatternURIMatcher("/a/b/*");
+
+        assertFalse(matcher.matches(URI.create("/a/b/c/d")));
+    }
+
+    @Test
+    void matchingParam() {
+        PatternURIMatcher matcher = new PatternURIMatcher("/users/:id");
+
+        assertTrue(matcher.matches(URI.create("/users/1")));
+    }
 }

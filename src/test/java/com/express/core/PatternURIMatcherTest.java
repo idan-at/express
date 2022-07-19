@@ -1,5 +1,6 @@
-package com.express;
+package com.express.core;
 
+import com.express.core.PatternURIMatcher;
 import org.junit.jupiter.api.Test;
 
 import java.net.URI;

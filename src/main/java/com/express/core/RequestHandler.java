@@ -1,23 +1,23 @@
-package com.express;
+package com.express.core;
 
 import com.express.http.HttpMethod;
 import com.sun.net.httpserver.HttpExchange;
 
 import java.util.ArrayList;
 
-class RequestHandler {
+public class RequestHandler {
     private final ArrayList<HandlerContainer> handlerContainers = new ArrayList<>();
     private final ArrayList<ErrorHandlerContainer> errorHandlerContainers = new ArrayList<>();
 
-    void add(HandlerContainer handlerContainer) {
+    public void add(HandlerContainer handlerContainer) {
         handlerContainers.add(handlerContainer);
     }
 
-    void add(ErrorHandlerContainer errorHandlerContainer) {
+    public void add(ErrorHandlerContainer errorHandlerContainer) {
         errorHandlerContainers.add(errorHandlerContainer);
     }
 
-    void handle(HttpExchange exchange) {
+    public void handle(HttpExchange exchange) {
         HttpMethod method = HttpMethod.fromString(exchange.getRequestMethod());
 
         final Request request = new Request(method);

@@ -1,12 +1,13 @@
-package com.express;
+package com.express.core;
 
+import com.express.ErrorHandler;
 import com.express.http.HttpMethod;
 
-class ErrorHandlerContainer {
+public class ErrorHandlerContainer {
     private final ErrorHandler handler;
     private final HandlerContext context;
 
-    ErrorHandlerContainer(HttpMethod method, String pattern, ErrorHandler handler) {
+    public ErrorHandlerContainer(HttpMethod method, String pattern, ErrorHandler handler) {
         context = new HandlerContext(method, pattern);
         this.handler = handler;
     }

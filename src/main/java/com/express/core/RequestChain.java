@@ -1,4 +1,6 @@
-package com.express;
+package com.express.core;
+
+import com.express.*;
 
 import java.util.Iterator;
 

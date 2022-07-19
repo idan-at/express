@@ -1,12 +1,13 @@
-package com.express;
+package com.express.core;
 
+import com.express.Handler;
 import com.express.http.HttpMethod;
 
-class HandlerContainer {
+public class HandlerContainer {
     private final Handler handler;
     private final HandlerContext context;
 
-    HandlerContainer(HttpMethod method, String pattern, Handler handler) {
+    public HandlerContainer(HttpMethod method, String pattern, Handler handler) {
         context = new HandlerContext(method, pattern);
         this.handler = handler;
     }

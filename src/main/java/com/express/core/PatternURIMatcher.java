@@ -1,4 +1,4 @@
-package com.express;
+package com.express.core;
 
 import java.net.URI;
 import java.util.HashMap;

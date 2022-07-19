@@ -1,6 +1,8 @@
 package com.express.core;
 
-import com.express.*;
+import com.express.api.ErrorHandler;
+import com.express.api.Handler;
+import com.express.api.NextFunctionHandler;
 
 import java.util.Iterator;
 

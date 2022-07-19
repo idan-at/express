@@ -1,6 +1,6 @@
 package com.express.core;
 
-import com.express.ErrorHandler;
+import com.express.api.ErrorHandler;
 import com.express.http.HttpMethod;
 
 public class ErrorHandlerContainer {

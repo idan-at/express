@@ -1,4 +1,4 @@
-package com.express;
+package com.express.api;
 
 public interface Routable {
     /**

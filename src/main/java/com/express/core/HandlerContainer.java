@@ -1,6 +1,6 @@
 package com.express.core;
 
-import com.express.Handler;
+import com.express.api.Handler;
 import com.express.http.HttpMethod;
 
 public class HandlerContainer {

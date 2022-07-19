@@ -1,5 +1,8 @@
 package com.express;
 
+import javax.swing.text.html.Option;
+import java.util.Optional;
+
 public class Request {
     private final HttpMethod method;
 
@@ -12,5 +15,12 @@ public class Request {
      */
     public HttpMethod getMethod() {
         return method;
+    }
+
+    /**
+     * @return An Optional<String>. If the param exists, the option will present. Otherwise, it will be empty.
+     */
+    public Optional<String> getParam(String name) {
+        return Optional.empty();
     }
 }

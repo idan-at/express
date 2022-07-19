@@ -5,13 +5,17 @@ import com.sun.net.httpserver.HttpExchange;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
+import java.util.logging.Logger;
 
 public class Response {
     private final HttpExchange exchange;
+    private final Logger logger;
     private int status = 200;
 
     Response(HttpExchange exchange) {
+
         this.exchange = exchange;
+        logger = Logger.getLogger(Response.class.getName());
     }
 
     /**
@@ -32,14 +36,7 @@ public class Response {
     public void send(String body) {
         byte[] bytes = body.getBytes(StandardCharsets.UTF_8);
 
-        try {
-            exchange.sendResponseHeaders(this.status, bytes.length);
-            OutputStream os = exchange.getResponseBody();
-            os.write(bytes);
-            os.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        send(this.status, bytes);
     }
 
     /**
@@ -48,11 +45,7 @@ public class Response {
      * @param status The HTTP status to send
      */
     public void sendStatus(int status) {
-        try {
-            exchange.sendResponseHeaders(status, 0);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        send(status, new byte[] {});
     }
 
     /**
@@ -65,5 +58,18 @@ public class Response {
         exchange.getResponseHeaders().set(name, value);
 
         return this;
+    }
+
+    private void send(int status, byte[] body) {
+        try {
+            exchange.sendResponseHeaders(status, body.length);
+            OutputStream os = exchange.getResponseBody();
+            os.write(body);
+            os.close();
+        } catch (IOException e) {
+            logger.warning("send failed: " + e.getMessage());
+
+            throw new RuntimeException(e);
+        }
     }
 }

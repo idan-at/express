@@ -11,16 +11,20 @@ import com.sun.net.httpserver.HttpServer;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.util.logging.Logger;
 
 public class Application implements Routable, AutoCloseable {
     private final RequestHandler requestHandler = new RequestHandler();
+    private final Logger logger;
     private HttpServer server;
 
     /**
      * Creates a new application. This does not mean the server starts.
      * See {@link #listen(int port) listen} for actually starting the server.
      */
-    public Application() {}
+    public Application() {
+        logger = Logger.getLogger(Application.class.getName());
+    }
 
     public Routable get(String pattern, Handler handler) {
         requestHandler.add(new HandlerContainer(HttpMethod.GET, pattern, handler));
@@ -102,6 +106,7 @@ public class Application implements Routable, AutoCloseable {
         server = HttpServer.create(socketAddress, 0);
         server.createContext("/", requestHandler::handle);
 
+        logger.info("Starting application...");
         server.start();
     }
 

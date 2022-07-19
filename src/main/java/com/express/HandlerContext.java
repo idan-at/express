@@ -1,5 +1,7 @@
 package com.express;
 
+import com.express.http.HttpMethod;
+
 import java.net.URI;
 
 class HandlerContext {

@@ -1,5 +1,7 @@
 package com.express;
 
+import com.express.http.HttpMethod;
+
 class HandlerContainer {
     private final Handler handler;
     private final HandlerContext context;

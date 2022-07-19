@@ -1,5 +1,6 @@
 package com.express;
 
+import com.express.http.HttpMethod;
 import org.junit.jupiter.api.Test;
 
 import java.net.URI;

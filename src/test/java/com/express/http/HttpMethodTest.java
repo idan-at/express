@@ -1,5 +1,7 @@
-package com.express;
+package com.express.http;
 
+import com.express.http.HttpMethod;
+import com.express.http.UnsupportedHttpMethodException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

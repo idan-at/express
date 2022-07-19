@@ -1,5 +1,7 @@
 package com.express;
 
+import com.express.http.HttpMethod;
+
 class ErrorHandlerContainer {
     private final ErrorHandler handler;
     private final HandlerContext context;

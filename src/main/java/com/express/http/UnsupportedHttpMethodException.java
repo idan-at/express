@@ -1,4 +1,4 @@
-package com.express;
+package com.express.http;
 
 public class UnsupportedHttpMethodException extends RuntimeException {
     UnsupportedHttpMethodException(String method) {

@@ -2,11 +2,11 @@ package com.express;
 
 import java.net.URI;
 
-abstract class AbstractHandlerContainer {
+class HandlerContext {
     private final HttpMethod method;
     private final PatternURIMatcher patternURIMatcher;
 
-    AbstractHandlerContainer(HttpMethod method, String pattern) {
+    HandlerContext(HttpMethod method, String pattern) {
         this.method = method;
         this.patternURIMatcher = new PatternURIMatcher(pattern);
     }

@@ -1,14 +1,19 @@
 package com.express;
 
-class HandlerContainer extends AbstractHandlerContainer {
+class HandlerContainer {
     private final Handler handler;
+    private final HandlerContext context;
 
     HandlerContainer(HttpMethod method, String pattern, Handler handler) {
-        super(method, pattern);
+        context = new HandlerContext(method, pattern);
         this.handler = handler;
     }
 
     Handler getHandler() {
         return handler;
+    }
+
+    public HandlerContext getContext() {
+        return context;
     }
 }

@@ -28,11 +28,11 @@ class RequestChainBuilder {
 
         return new RequestChain(
             handlerContainers.stream()
-                .filter(handlerContainer -> handlerContainer.matches(method, url))
+                .filter(handlerContainer -> handlerContainer.getContext().matches(method, url))
                 .map(HandlerContainer::getHandler)
                 .iterator(),
             errorHandlerContainers.stream()
-                .filter(handlerContainer -> handlerContainer.matches(method, url))
+                .filter(handlerContainer -> handlerContainer.getContext().matches(method, url))
                 .map(ErrorHandlerContainer::getHandler)
                 .iterator()
         );

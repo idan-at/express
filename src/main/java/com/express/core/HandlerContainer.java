@@ -12,9 +12,7 @@ public class HandlerContainer {
         this.handler = handler;
     }
 
-    Handler getHandler() {
-        return handler;
-    }
+    Handler getHandler() { return handler; }
 
     public HandlerContext getContext() {
         return context;

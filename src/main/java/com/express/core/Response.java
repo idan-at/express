@@ -13,7 +13,6 @@ public class Response {
     private int status = 200;
 
     Response(HttpExchange exchange) {
-
         this.exchange = exchange;
         logger = Logger.getLogger(Response.class.getName());
     }
@@ -36,7 +35,7 @@ public class Response {
     public void send(String body) {
         byte[] bytes = body.getBytes(StandardCharsets.UTF_8);
 
-        send(this.status, bytes);
+        send(status, bytes);
     }
 
     /**
@@ -63,9 +62,14 @@ public class Response {
     private void send(int status, byte[] body) {
         try {
             exchange.sendResponseHeaders(status, body.length);
-            OutputStream os = exchange.getResponseBody();
-            os.write(body);
-            os.close();
+
+            if (body.length > 0) {
+                OutputStream os = exchange.getResponseBody();
+                os.write(body);
+                os.close();
+            }
+
+            exchange.close();
         } catch (IOException e) {
             logger.warning("send failed: " + e.getMessage());
 

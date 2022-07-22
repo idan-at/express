@@ -7,17 +7,17 @@ import com.express.api.NextFunctionHandler;
 import java.util.Iterator;
 
 class RequestChain {
-    private final Iterator<Handler> handlersIterator;
-    private final Iterator<ErrorHandler> errorHandlersIterator;
+    private final Iterator<HandlerContainer> handlersIterator;
+    private final Iterator<ErrorHandlerContainer> errorHandlersIterator;
 
-    RequestChain(Iterator<Handler> handlersIterator, Iterator<ErrorHandler> errorHandlersIterator) {
+    RequestChain(Iterator<HandlerContainer> handlersIterator, Iterator<ErrorHandlerContainer> errorHandlersIterator) {
         this.handlersIterator = handlersIterator;
         this.errorHandlersIterator = errorHandlersIterator;
     }
 
     void run(Request request, Response response) {
         if (handlersIterator.hasNext()) {
-            Handler handler = handlersIterator.next();
+            Handler handler = handlersIterator.next().getHandler();
 
             handler.handle(request, response, new NextFunctionHandler() {
                 @Override
@@ -35,7 +35,7 @@ class RequestChain {
 
     private void runError(Exception e, Request request, Response response) {
         if (errorHandlersIterator.hasNext()) {
-            ErrorHandler errorHandler = errorHandlersIterator.next();
+            ErrorHandler errorHandler = errorHandlersIterator.next().getHandler();
 
             errorHandler.handle(e, request, response, new NextFunctionHandler() {
                 @Override

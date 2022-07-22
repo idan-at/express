@@ -20,7 +20,7 @@ class App {
 
 ## Installation
 
-Add this to your `pom.xml` / `build.gradle` file:
+Add this dependency to your `pom.xml` / `build.gradle` file:
 
 ```bash
 com.express:express:1.0-SNAPSHOT
@@ -50,3 +50,9 @@ class App {
     }
 }
 ```
+
+## Todo:
+- Export params to user
+- Middleware
+- Router
+- More Request & Response APIs

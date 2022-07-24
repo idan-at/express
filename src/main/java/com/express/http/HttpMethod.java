@@ -7,9 +7,7 @@ public enum HttpMethod {
     PATCH("PATCH"),
     DELETE("DELETE");
 
-    HttpMethod(String s) {
-
-    }
+    HttpMethod(String s) {}
 
     public static HttpMethod fromString(String method) {
         switch (method) {

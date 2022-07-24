@@ -12,6 +12,10 @@ class PatternURIMatcher {
     }
 
     boolean matches(URI uri) {
+        if (pattern.equals("*")) {
+            return true;
+        }
+
         final String[] segments = pattern.split("/");
         final String[] uriSegments = uri.toString().split("/");
         final Map<String, String> params = new HashMap<>();

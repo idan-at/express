@@ -26,6 +26,13 @@ public class Application implements Routable, AutoCloseable {
         logger = Logger.getLogger(Application.class.getName());
     }
 
+    @Override
+    public Routable use(String pattern, Handler handler) {
+        requestHandler.add(new HandlerContainer(null, pattern, handler));
+
+        return this;
+    }
+
     public Routable get(String pattern, Handler handler) {
         requestHandler.add(new HandlerContainer(HttpMethod.GET, pattern, handler));
 

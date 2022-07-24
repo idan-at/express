@@ -14,6 +14,10 @@ class HandlerContext {
     }
 
     boolean matches(String method, URI uri) {
-        return this.method.toString().equals(method) && patternURIMatcher.matches(uri);
+        return methodMatches(method) && patternURIMatcher.matches(uri);
+    }
+
+    private boolean methodMatches(String method) {
+        return this.method == null || this.method.toString().equals(method);
     }
 }

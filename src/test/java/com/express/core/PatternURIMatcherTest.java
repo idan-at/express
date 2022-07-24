@@ -10,6 +10,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class PatternURIMatcherTest {
     @Test
+    void catchAll() {
+        PatternURIMatcher matcher = new PatternURIMatcher("*");
+
+        assertTrue(matcher.matches(URI.create("/")));
+        assertTrue(matcher.matches(URI.create("/some-url")));
+        assertTrue(matcher.matches(URI.create("/some/deep/url")));
+    }
+
+    @Test
     void equals() {
         PatternURIMatcher matcher = new PatternURIMatcher("/");
 

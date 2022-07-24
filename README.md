@@ -53,6 +53,5 @@ class App {
 
 ## Todo:
 - Export params to user
-- Middleware
 - Router
 - More Request & Response APIs

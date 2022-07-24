@@ -2,6 +2,14 @@ package com.express.api;
 
 public interface Routable {
     /**
+     * Routes all HTTP requests to the given handler.
+     * @param pattern The URL pattern, e.g "/users"
+     * @param handler The Handler function
+     * @return The routable object, to allow chaining.
+     */
+    Routable use(String pattern, Handler handler);
+
+    /**
      * Routes HTTP GET requests to the given handler.
      * @param pattern The URL pattern, e.g "/users"
      * @param handler The Handler function

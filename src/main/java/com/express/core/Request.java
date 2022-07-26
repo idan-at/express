@@ -7,7 +7,7 @@ import java.util.Optional;
 public class Request {
     private final HttpMethod method;
 
-    Request(HttpMethod method) {
+    public Request(HttpMethod method) {
         this.method = method;
     }
 

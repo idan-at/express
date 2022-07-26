@@ -1,13 +1,13 @@
-package com.express.core;
+package com.express.core.handler;
 
 import java.net.URI;
 import java.util.HashMap;
 import java.util.Map;
 
-class PatternURIMatcher {
+public class PatternURIMatcher {
     private final String pattern;
 
-    PatternURIMatcher(String pattern) {
+    public PatternURIMatcher(String pattern) {
         this.pattern = pattern;
     }
 

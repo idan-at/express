@@ -1,4 +1,4 @@
-package com.express.core;
+package com.express.core.handler;
 
 import com.express.api.Handler;
 import com.express.http.HttpMethod;
@@ -12,7 +12,7 @@ public class HandlerContainer {
         this.handler = handler;
     }
 
-    Handler getHandler() { return handler; }
+    public Handler getHandler() { return handler; }
 
     public HandlerContext getContext() {
         return context;

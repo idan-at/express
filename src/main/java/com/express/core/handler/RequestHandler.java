@@ -1,5 +1,8 @@
-package com.express.core;
+package com.express.core.handler;
 
+import com.express.api.ErrorHandler;
+import com.express.api.Handler;
+import com.express.core.*;
 import com.express.http.HttpMethod;
 import com.sun.net.httpserver.HttpExchange;
 
@@ -9,12 +12,12 @@ public class RequestHandler {
     private final ArrayList<HandlerContainer> handlerContainers = new ArrayList<>();
     private final ArrayList<ErrorHandlerContainer> errorHandlerContainers = new ArrayList<>();
 
-    public void add(HandlerContainer handlerContainer) {
-        handlerContainers.add(handlerContainer);
+    public void add(HttpMethod method, String pattern, Handler handler) {
+        handlerContainers.add(new HandlerContainer(method, pattern, handler));
     }
 
-    public void add(ErrorHandlerContainer errorHandlerContainer) {
-        errorHandlerContainers.add(errorHandlerContainer);
+    public void add(HttpMethod method, String pattern, ErrorHandler handler) {
+        errorHandlerContainers.add(new ErrorHandlerContainer(method, pattern, handler));
     }
 
     public void handle(HttpExchange exchange) {

@@ -1,4 +1,4 @@
-package com.express.core;
+package com.express.core.handler;
 
 import com.express.http.HttpMethod;
 import org.junit.jupiter.api.Test;
@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.net.URI;
 import java.util.Random;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class HandlerContextTest {
     private final Random random = new Random();

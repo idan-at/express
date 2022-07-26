@@ -1,4 +1,4 @@
-package com.express.core;
+package com.express.core.handler;
 
 import com.express.api.ErrorHandler;
 import com.express.http.HttpMethod;
@@ -12,7 +12,7 @@ public class ErrorHandlerContainer {
         this.handler = handler;
     }
 
-    ErrorHandler getHandler() {
+    public ErrorHandler getHandler() {
         return handler;
     }
 

@@ -3,9 +3,9 @@ package com.express;
 import com.express.api.ErrorHandler;
 import com.express.api.Handler;
 import com.express.api.Routable;
-import com.express.core.ErrorHandlerContainer;
-import com.express.core.HandlerContainer;
-import com.express.core.RequestHandler;
+import com.express.core.handler.ErrorHandlerContainer;
+import com.express.core.handler.HandlerContainer;
+import com.express.core.handler.RequestHandler;
 import com.express.http.HttpMethod;
 import com.sun.net.httpserver.HttpServer;
 
@@ -28,76 +28,76 @@ public class Application implements Routable, AutoCloseable {
 
     @Override
     public Routable use(String pattern, Handler handler) {
-        requestHandler.add(new HandlerContainer(null, pattern, handler));
+        requestHandler.add(null, pattern, handler);
 
         return this;
     }
 
     public Routable get(String pattern, Handler handler) {
-        requestHandler.add(new HandlerContainer(HttpMethod.GET, pattern, handler));
+        requestHandler.add(HttpMethod.GET, pattern, handler);
 
         return this;
     }
 
     @Override
     public Routable get(String pattern, ErrorHandler handler) {
-        requestHandler.add(new ErrorHandlerContainer(HttpMethod.GET, pattern, handler));
+        requestHandler.add(HttpMethod.GET, pattern, handler);
 
         return this;
     }
 
     @Override
     public Routable post(String pattern, Handler handler) {
-        requestHandler.add(new HandlerContainer(HttpMethod.POST, pattern, handler));
+        requestHandler.add(HttpMethod.POST, pattern, handler);
 
         return this;
     }
 
     @Override
     public Routable post(String pattern, ErrorHandler handler) {
-        requestHandler.add(new ErrorHandlerContainer(HttpMethod.POST, pattern, handler));
+        requestHandler.add(HttpMethod.POST, pattern, handler);
 
         return this;
     }
 
     @Override
     public Routable put(String pattern, Handler handler) {
-        requestHandler.add(new HandlerContainer(HttpMethod.PUT, pattern, handler));
+        requestHandler.add(HttpMethod.PUT, pattern, handler);
 
         return this;
     }
 
     @Override
     public Routable put(String pattern, ErrorHandler handler) {
-        requestHandler.add(new ErrorHandlerContainer(HttpMethod.PUT, pattern, handler));
+        requestHandler.add(HttpMethod.PUT, pattern, handler);
 
         return this;
     }
 
     @Override
     public Routable patch(String pattern, Handler handler) {
-        requestHandler.add(new HandlerContainer(HttpMethod.PATCH, pattern, handler));
+        requestHandler.add(HttpMethod.PATCH, pattern, handler);
 
         return this;
     }
 
     @Override
     public Routable patch(String pattern, ErrorHandler handler) {
-        requestHandler.add(new ErrorHandlerContainer(HttpMethod.PATCH, pattern, handler));
+        requestHandler.add(HttpMethod.PATCH, pattern, handler);
 
         return this;
     }
 
     @Override
     public Routable delete(String pattern, Handler handler) {
-        requestHandler.add(new HandlerContainer(HttpMethod.DELETE, pattern, handler));
+        requestHandler.add(HttpMethod.DELETE, pattern, handler);
 
         return this;
     }
 
     @Override
     public Routable delete(String pattern, ErrorHandler handler) {
-        requestHandler.add(new ErrorHandlerContainer(HttpMethod.DELETE, pattern, handler));
+        requestHandler.add(HttpMethod.DELETE, pattern, handler);
 
         return this;
     }

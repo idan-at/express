@@ -12,7 +12,7 @@ public class Response {
     private final Logger logger;
     private int status = 200;
 
-    Response(HttpExchange exchange) {
+    public Response(HttpExchange exchange) {
         this.exchange = exchange;
         logger = Logger.getLogger(Response.class.getName());
     }

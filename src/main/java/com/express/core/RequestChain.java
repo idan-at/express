@@ -3,10 +3,12 @@ package com.express.core;
 import com.express.api.ErrorHandler;
 import com.express.api.Handler;
 import com.express.api.NextFunctionHandler;
+import com.express.core.handler.ErrorHandlerContainer;
+import com.express.core.handler.HandlerContainer;
 
 import java.util.Iterator;
 
-class RequestChain {
+public class RequestChain {
     private final Iterator<HandlerContainer> handlersIterator;
     private final Iterator<ErrorHandlerContainer> errorHandlersIterator;
 
@@ -15,7 +17,7 @@ class RequestChain {
         this.errorHandlersIterator = errorHandlersIterator;
     }
 
-    void run(Request request, Response response) {
+    public void run(Request request, Response response) {
         if (handlersIterator.hasNext()) {
             Handler handler = handlersIterator.next().getHandler();
 

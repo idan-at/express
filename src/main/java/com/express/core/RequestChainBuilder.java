@@ -1,7 +1,9 @@
 package com.express.core;
 
+import com.express.api.Handler;
 import com.express.core.handler.ErrorHandlerContainer;
 import com.express.core.handler.HandlerContainer;
+import com.express.core.handler.HandlerMatchResult;
 import com.sun.net.httpserver.HttpExchange;
 
 import java.net.URI;
@@ -29,12 +31,14 @@ public class RequestChainBuilder {
         final URI url = exchange.getRequestURI();
 
         return new RequestChain(
-            handlerContainers.stream()
-                .filter(handlerContainer -> handlerContainer.getContext().matches(method, url).isMatch())
-                .iterator(),
-            errorHandlerContainers.stream()
-                .filter(handlerContainer -> handlerContainer.getContext().matches(method, url).isMatch())
-                .iterator()
+                handlerContainers.stream()
+                        .map(handlerContainer -> new MatchedHandler(handlerContainer.getHandler(), handlerContainer.getContext().matches(method, url)))
+                        .filter(matchedHandler -> matchedHandler.getMatchResult().isMatch())
+                        .iterator(),
+                errorHandlerContainers.stream()
+                        .map(handlerContainer -> new MatchedErrorHandler(handlerContainer.getHandler(), handlerContainer.getContext().matches(method, url)))
+                        .filter(matchedHandler -> matchedHandler.getMatchResult().isMatch())
+                        .iterator()
         );
     }
 }

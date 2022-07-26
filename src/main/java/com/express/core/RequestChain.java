@@ -9,19 +9,20 @@ import com.express.core.handler.HandlerContainer;
 import java.util.Iterator;
 
 public class RequestChain {
-    private final Iterator<HandlerContainer> handlersIterator;
-    private final Iterator<ErrorHandlerContainer> errorHandlersIterator;
+    private final Iterator<MatchedHandler> matchedHandlerIterator;
+    private final Iterator<MatchedErrorHandler> matchedErrorHandlerIterator;
 
-    RequestChain(Iterator<HandlerContainer> handlersIterator, Iterator<ErrorHandlerContainer> errorHandlersIterator) {
-        this.handlersIterator = handlersIterator;
-        this.errorHandlersIterator = errorHandlersIterator;
+    RequestChain(Iterator<MatchedHandler> matchedHandlerIterator, Iterator<MatchedErrorHandler> matchedErrorHandlerIterator) {
+        this.matchedHandlerIterator = matchedHandlerIterator;
+        this.matchedErrorHandlerIterator = matchedErrorHandlerIterator;
     }
 
     public void run(Request request, Response response) {
-        if (handlersIterator.hasNext()) {
-            Handler handler = handlersIterator.next().getHandler();
+        if (matchedHandlerIterator.hasNext()) {
+            MatchedHandler matchedHandler = matchedHandlerIterator.next();
 
-            handler.handle(request, response, new NextFunctionHandler() {
+            request.setParams(matchedHandler.getMatchResult().getParams());
+            matchedHandler.getHandler().handle(request, response, new NextFunctionHandler() {
                 @Override
                 public void ok() {
                     run(request, response);
@@ -36,10 +37,11 @@ public class RequestChain {
     }
 
     private void runError(Exception e, Request request, Response response) {
-        if (errorHandlersIterator.hasNext()) {
-            ErrorHandler errorHandler = errorHandlersIterator.next().getHandler();
+        if (matchedErrorHandlerIterator.hasNext()) {
+            MatchedErrorHandler matchedErrorHandler = matchedErrorHandlerIterator.next();
 
-            errorHandler.handle(e, request, response, new NextFunctionHandler() {
+            request.setParams(matchedErrorHandler.getMatchResult().getParams());
+            matchedErrorHandler.getHandler().handle(e, request, response, new NextFunctionHandler() {
                 @Override
                 public void ok() {
                     throw new RuntimeException("next.ok() can't be invoked from a ErrorHandler");

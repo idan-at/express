@@ -44,7 +44,7 @@ class App {
         
         app.get("/login", (req, res, next) -> res.sendStatus(401))
             .get("/api/*", (req, res, next) -> res.send("{}"))
-            .get("/users/:id", (req, res, next) -> res.send(req.getParam("id")));
+            .get("/users/:id", (req, res, next) -> res.send(req.getParam("id").get()));
 
         app.listen(3000);
     }
@@ -52,6 +52,5 @@ class App {
 ```
 
 ## Todo:
-- Export params to user
 - Router
 - More Request & Response APIs

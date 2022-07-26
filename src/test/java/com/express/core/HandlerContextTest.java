@@ -4,29 +4,47 @@ import com.express.http.HttpMethod;
 import org.junit.jupiter.api.Test;
 
 import java.net.URI;
+import java.util.Random;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class HandlerContextTest {
+    private final Random random = new Random();
+
+    HttpMethod randomHttpMethod() {
+        final HttpMethod[] values = HttpMethod.values();
+
+        final int index = random.nextInt(values.length);
+
+        return values[index];
+    }
+
     @Test
     void matches() {
         HandlerContext context = new HandlerContext(HttpMethod.GET, "/");
 
-        assertTrue(context.matches(HttpMethod.GET.toString(), URI.create("/")));;
+        assertEquals(context.matches(HttpMethod.GET.toString(), URI.create("/")), new HandlerMatchResult(true));
     }
+
+    @Test
+    void matchesAnyHttpMethod() {
+        HandlerContext context = new HandlerContext(null, "/");
+
+        assertEquals(context.matches(randomHttpMethod().toString(), URI.create("/")), new HandlerMatchResult(true));
+    }
+
 
     @Test
     void httpMethodMismatch() {
         HandlerContext context = new HandlerContext(HttpMethod.GET, "/");
 
-        assertFalse(context.matches(HttpMethod.POST.toString(), URI.create("/")));;
+        assertEquals(context.matches(HttpMethod.POST.toString(), URI.create("/")), new HandlerMatchResult(false));
     }
 
     @Test
     void patternMismatch() {
         HandlerContext context = new HandlerContext(HttpMethod.GET, "/hello");
 
-        assertFalse(context.matches(HttpMethod.GET.toString(), URI.create("/wrong")));;
+        assertEquals(context.matches(HttpMethod.GET.toString(), URI.create("/wrong")), new HandlerMatchResult(false));
     }
 }

@@ -13,8 +13,12 @@ class HandlerContext {
         this.patternURIMatcher = new PatternURIMatcher(pattern);
     }
 
-    boolean matches(String method, URI uri) {
-        return methodMatches(method) && patternURIMatcher.matches(uri);
+    HandlerMatchResult matches(String method, URI uri) {
+        if (!methodMatches(method)) {
+            return new HandlerMatchResult(false);
+        }
+
+        return patternURIMatcher.matches(uri);
     }
 
     private boolean methodMatches(String method) {

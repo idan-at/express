@@ -11,9 +11,9 @@ class PatternURIMatcher {
         this.pattern = pattern;
     }
 
-    boolean matches(URI uri) {
+    HandlerMatchResult matches(URI uri) {
         if (pattern.equals("*")) {
-            return true;
+            return new HandlerMatchResult(true);
         }
 
         final String[] segments = pattern.split("/");
@@ -36,13 +36,14 @@ class PatternURIMatcher {
                 i += 1;
                 j += 1;
             } else {
-                return false;
+                return new HandlerMatchResult(false);
             }
         }
 
-        System.out.println(params);
-
-        return i == segments.length && j == uriSegments.length;
+        return new HandlerMatchResult(
+                i == segments.length && j == uriSegments.length,
+                params
+        );
     }
 
     private boolean patternMatches(String pattern, String segment) {

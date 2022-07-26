@@ -28,10 +28,10 @@ class RequestChainBuilder {
 
         return new RequestChain(
             handlerContainers.stream()
-                .filter(handlerContainer -> handlerContainer.getContext().matches(method, url))
+                .filter(handlerContainer -> handlerContainer.getContext().matches(method, url).isMatch())
                 .iterator(),
             errorHandlerContainers.stream()
-                .filter(handlerContainer -> handlerContainer.getContext().matches(method, url))
+                .filter(handlerContainer -> handlerContainer.getContext().matches(method, url).isMatch())
                 .iterator()
         );
     }

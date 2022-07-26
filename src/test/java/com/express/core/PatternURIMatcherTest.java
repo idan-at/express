@@ -1,69 +1,70 @@
 package com.express.core;
 
-import com.express.core.PatternURIMatcher;
 import org.junit.jupiter.api.Test;
 
 import java.net.URI;
+import java.util.HashMap;
 
-import static org.junit.jupiter.api.Assertions.assertFalse;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class PatternURIMatcherTest {
     @Test
     void catchAll() {
         PatternURIMatcher matcher = new PatternURIMatcher("*");
 
-        assertTrue(matcher.matches(URI.create("/")));
-        assertTrue(matcher.matches(URI.create("/some-url")));
-        assertTrue(matcher.matches(URI.create("/some/deep/url")));
+        assertEquals(matcher.matches(URI.create("/")), new HandlerMatchResult(true));
+        assertEquals(matcher.matches(URI.create("/some-url")), new HandlerMatchResult(true));
+        assertEquals(matcher.matches(URI.create("/some/deep/url")), new HandlerMatchResult(true));
     }
 
     @Test
     void equals() {
         PatternURIMatcher matcher = new PatternURIMatcher("/");
 
-        assertTrue(matcher.matches(URI.create("/")));
+        assertEquals(matcher.matches(URI.create("/")), new HandlerMatchResult(true));
     }
 
     @Test
     void doesNotEqual() {
         PatternURIMatcher matcher = new PatternURIMatcher("/hello");
 
-        assertFalse(matcher.matches(URI.create("/bye")));
+        assertEquals(matcher.matches(URI.create("/bye")), new HandlerMatchResult(false));
     }
 
     @Test
     void equalsMultipleSegments() {
         PatternURIMatcher matcher = new PatternURIMatcher("/a/b/c/d");
 
-        assertTrue(matcher.matches(URI.create("/a/b/c/d")));
+        assertEquals(matcher.matches(URI.create("/a/b/c/d")), new HandlerMatchResult(true));
     }
 
     @Test
     void ignoresTrailingSlash() {
         PatternURIMatcher matcher = new PatternURIMatcher("/a/b/c/d");
 
-        assertTrue(matcher.matches(URI.create("/a/b/c/d/")));
+        assertEquals(matcher.matches(URI.create("/a/b/c/d/")), new HandlerMatchResult(true));
     }
 
     @Test
     void basicWildcard() {
         PatternURIMatcher matcher = new PatternURIMatcher("/a/b/*/d");
 
-        assertTrue(matcher.matches(URI.create("/a/b/c/d")));
+        assertEquals(matcher.matches(URI.create("/a/b/c/d")), new HandlerMatchResult(true));
     }
 
     @Test
     void wildcardMismatch() {
         PatternURIMatcher matcher = new PatternURIMatcher("/a/b/*");
 
-        assertFalse(matcher.matches(URI.create("/a/b/c/d")));
+        assertEquals(matcher.matches(URI.create("/a/b/c/d")), new HandlerMatchResult(false));
     }
 
     @Test
     void matchingParam() {
         PatternURIMatcher matcher = new PatternURIMatcher("/users/:id");
 
-        assertTrue(matcher.matches(URI.create("/users/1")));
+        assertEquals(matcher.matches(URI.create("/users/1")), new HandlerMatchResult(true, new HashMap<>() {{
+          put("id", "1");
+        }}));
     }
 }

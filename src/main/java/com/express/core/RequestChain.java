@@ -33,6 +33,8 @@ public class RequestChain {
                     runError(e, request, response);
                 }
             });
+        } else {
+            response.sendStatus(404);
         }
     }
 
@@ -52,6 +54,8 @@ public class RequestChain {
                     runError(e, request, response);
                 }
             });
+        } else {
+            response.sendStatus(500);
         }
     }
 }

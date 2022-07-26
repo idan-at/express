@@ -5,17 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e489cfb2-3e8e-4251-aa87-4c398aa7b7bf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/express/core/MatchedErrorHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/express/core/MatchedHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/express/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/express/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/express/core/Request.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/express/core/Request.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/it/application/DefaultHandlersIT.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/express/core/RequestChain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/express/core/RequestChain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/express/core/RequestChainBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/express/core/RequestChainBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/express/core/Response.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/express/core/Response.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/express/core/handler/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/express/core/RequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/it/application/RequestIT.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/it/application/RequestIT.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,8 +78,8 @@
       <recent name="it.application" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.RequestIT.getParam_errorChain">
-    <configuration name="HandlerContextTest (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.DefaultHandlersIT.respondsWith500WhenNoMatchingErrorHandler">
+    <configuration name="DefaultHandlersIT" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -101,7 +92,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.express.core.handler.HandlerContextTest&quot;" />
+            <option value="&quot;it.application.DefaultHandlersIT&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -111,7 +102,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="HandlerContextTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="DefaultHandlersIT.respondsWith404WhenNoMatchingHandler" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -124,7 +115,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.express.core.HandlerContextTest&quot;" />
+            <option value="&quot;it.application.DefaultHandlersIT.respondsWith404WhenNoMatchingHandler&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -134,7 +125,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="MiddlewareIT" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="DefaultHandlersIT.respondsWith500WhenNoMatchingErrorHandler" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -147,7 +138,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;it.application.MiddlewareIT&quot;" />
+            <option value="&quot;it.application.DefaultHandlersIT.respondsWith500WhenNoMatchingErrorHandler&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -157,7 +148,7 @@
       <DebugAllEnabled>false</DebugAllEnabled>
       <method v="2" />
     </configuration>
-    <configuration name="PatternURIMatcherTest (1)" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration name="ErrorChainingIT.disallowErrorToInvokeNextOk" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
@@ -170,7 +161,7 @@
           <list>
             <option value=":test" />
             <option value="--tests" />
-            <option value="&quot;com.express.core.PatternURIMatcherTest&quot;" />
+            <option value="&quot;it.application.ErrorChainingIT.disallowErrorToInvokeNextOk&quot;" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -205,11 +196,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.DefaultHandlersIT.respondsWith500WhenNoMatchingErrorHandler" />
+        <item itemvalue="Gradle.DefaultHandlersIT" />
+        <item itemvalue="Gradle.ErrorChainingIT.disallowErrorToInvokeNextOk" />
+        <item itemvalue="Gradle.DefaultHandlersIT.respondsWith404WhenNoMatchingHandler" />
         <item itemvalue="Gradle.RequestIT.getParam_errorChain" />
-        <item itemvalue="Gradle.HandlerContextTest (1)" />
-        <item itemvalue="Gradle.PatternURIMatcherTest (1)" />
-        <item itemvalue="Gradle.HandlerContextTest" />
-        <item itemvalue="Gradle.MiddlewareIT" />
       </list>
     </recent_temporary>
   </component>
@@ -248,6 +239,20 @@
     </option>
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/express/core/RequestChain.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/express/core/RequestChain.java</url>
+          <line>36</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="GradleRunConfiguration">
         <watch expression="handlersIterator.hasNext()" language="JAVA" />

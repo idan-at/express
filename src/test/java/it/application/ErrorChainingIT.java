@@ -31,6 +31,15 @@ public class ErrorChainingIT {
         app.put("/put", (req, res, next) -> next.error(e)).put("/put", (err, req, res, next) -> res.send(err.getMessage()));
         app.delete("/delete", (req, res, next) -> next.error(e)).delete("/delete", (err, req, res, next) -> res.send(err.getMessage()));
 
+        app.get("/disallow-error-to-ok", (req, res, next) -> next.error(e)).get("/disallow-error-to-ok", (err, req, res, next) -> {
+            try {
+                next.ok();
+                res.sendStatus(500);
+            } catch (Exception error) {
+                res.sendStatus(200);
+            }
+        });
+
         app.listen(3000);
     }
 
@@ -92,5 +101,14 @@ public class ErrorChainingIT {
 
         assertEquals(200, response.getStatusLine().getStatusCode());
         assertEquals("Oops", body);
+    }
+
+    @Test
+    void disallowErrorToInvokeNextOk() throws IOException {
+        HttpGet request = new HttpGet("http://localhost:3000/disallow-error-to-ok");
+
+        HttpResponse response = httpClient.execute(request);
+
+        assertEquals(200, response.getStatusLine().getStatusCode());
     }
 }

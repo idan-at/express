@@ -6,6 +6,7 @@ import com.express.core.*;
 import com.express.core.handler.ErrorHandlerContainer;
 import com.express.core.handler.HandlerContainer;
 import com.express.http.HttpMethod;
+import com.sun.net.httpserver.Headers;
 import com.sun.net.httpserver.HttpExchange;
 
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ public class RequestHandler {
     public void handle(HttpExchange exchange) {
         HttpMethod method = HttpMethod.fromString(exchange.getRequestMethod());
 
-        final Request request = new Request(method);
+        final Request request = new Request(method, exchange.getRequestHeaders());
         final Response response = new Response(exchange);
 
         final RequestChain requestChain = new RequestChainBuilder()

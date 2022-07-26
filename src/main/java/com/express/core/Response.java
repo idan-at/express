@@ -29,6 +29,13 @@ public class Response {
     }
 
     /**
+     * Finalizes the response
+     */
+    public void end() {
+        sendStatus(status);
+    }
+
+    /**
      * Finalizes the response and sends the given body.
      * @param body The string body to send.
      */
@@ -39,7 +46,7 @@ public class Response {
     }
 
     /**
-     * Finalizes the request by sending the given HTTP status
+     * Finalizes the response by sending the given HTTP status
      *
      * @param status The HTTP status to send
      */

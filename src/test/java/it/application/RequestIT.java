@@ -23,6 +23,7 @@ public class RequestIT {
     static void setup() throws IOException {
         app = new Application();
 
+        app.get("/getHeader", (req, res, next) -> res.send(req.getHeader("custom-header").get(0)));
         app.get("/getMethod", (req, res, next) -> res.send(req.getMethod().toString()));
         app.get("/getParam/:p", (req, res, next) -> res.send(req.getParam("p").get()));
         app.get("/getParamChain/:p", (req, res, next) -> next.ok())
@@ -49,6 +50,18 @@ public class RequestIT {
     @AfterAll
     static void teardown() {
         app.close();
+    }
+
+    @Test
+    void getHeader() throws IOException {
+        HttpGet request = new HttpGet("http://localhost:3000/getHeader");
+        request.setHeader("custom-header", "header-value");
+
+        HttpResponse response = httpClient.execute(request);
+        String body = new String(response.getEntity().getContent().readAllBytes(), StandardCharsets.UTF_8);
+
+        assertEquals(200, response.getStatusLine().getStatusCode());
+        assertEquals("header-value", body);
     }
 
     @Test

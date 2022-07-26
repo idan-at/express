@@ -24,6 +24,7 @@ public class ResponseIT {
         app = new Application();
 
         app.get("/send", (req, res, next) -> res.send("Hello, World!"));
+        app.get("/end", (req, res, next) -> res.end());
         app.get("/setStatus", (req, res, next) -> res.setStatus(202).send("Hello, World!"));
         app.get("/sendStatus", (req, res, next) -> res.sendStatus(400));
         app.get("/setHeader", (req, res, next) -> res.setHeader("X-Custom-Header", "some-value").sendStatus(200));
@@ -46,6 +47,17 @@ public class ResponseIT {
         assertEquals(200, response.getStatusLine().getStatusCode());
         assertEquals("Hello, World!", body);
     }
+
+    @Disabled("Hangs when runs together with setHeader, not sure why yet.")
+    @Test
+    void end() throws IOException {
+        HttpGet request = new HttpGet("http://localhost:3000/end");
+
+        HttpResponse response = httpClient.execute(request);
+
+        assertEquals(200, response.getStatusLine().getStatusCode());
+    }
+
 
     @Disabled("Hangs when runs together with setHeader, not sure why yet.")
     @Test
